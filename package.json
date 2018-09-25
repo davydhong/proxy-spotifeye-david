@@ -1,0 +1,20 @@
+{
+  "name": "dot-then-proxy",
+  "version": "1.0.0",
+  "description": "Attempt at recreating Spotify Artist page UI",
+  "author": "Wissem Gamra",
+  "license": "",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.15",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0"
+  }
+}
