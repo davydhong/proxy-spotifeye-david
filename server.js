@@ -1,18 +1,21 @@
-const express = require ('express');
+require('newrelic')
+const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 var compression = require('compression');
-
 var server = express();
-server.use(compression())
+
+require('console-stamp')(console, 'HH:MM:ss.l');
+server.use(compression());
+server.use(require('morgan')('short'));
+
 server.use(bodyParser.json());
-server.use(express.urlencoded({extended: true}));
+server.use(express.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, './'), { maxAge: '30 days' }));
 server.use(cors());
-
 // Albums & Player
-server.get('/artists/albums/:artistID', (req, res) => {
+server.get('/artists/:artistID/albums/', (req, res) => {
   res.redirect('http://52.15.129.193' + req.url);
 });
 
@@ -28,7 +31,7 @@ server.get('/artist/:id', (req, res) => {
 
 // Header
 server.get('/artists/:artistID', (req, res) => {
-   res.redirect('http://35.172.133.115' + req.url);
+  res.redirect('http://35.172.133.115' + req.url);
 });
 
 server.listen(3000, console.log('Listening on:', 3000));
