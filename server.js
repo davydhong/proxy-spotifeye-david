@@ -19,25 +19,27 @@ server.use(cors());
 // Albums & Player
 
 server.all('/api/v1/artists/:artistID/albums/', (req, res, next) => {
-  // console.log('http://localhost:3001' + req.url);
-  res.redirect('ec2-54-164-130-42.compute-1.amazonaws.com' + req.url);
+  // console.log('ec2-54-164-130-42.compute-1.amazonaws.com' + req.url);
+  res.redirect('http://54.164.130.42' + req.url);
   next();
 });
 
-// // Related Artists
-// server.all('/artist/:id/relatedArtists', (req, res) => {
-//   res.redirect('http://18.206.245.56' + req.url);
-// });
+// Related Artists
+server.all('/api/v1/artists/:id/related-artists', (req, res) => {
+  const { id } = req.params;
+  res.redirect(`http://54.148.230.254:3002/api/v1/artists/${id}/related-artists`);
+});
 
-// // Popular Songs
-// server.all('/artist/:id', (req, res) => {
-//   res.redirect('http://18.224.17.253' + req.url);
-// });
+// Popular Songs
+server.all('/api/v1/artists/:id/popular-songs', (req, res) => {
+  res.redirect('http://13.56.189.115' + req.url);
+});
 
-// // Header
-// server.all('/artists/:artistID', (req, res) => {
-//   res.redirect('http://35.172.133.115' + req.url);
-// });
+// Header
+server.all('/api/v1/artists/:artistID', (req, res) => {
+  // console.log(req.url);
+  res.redirect('http://18.221.180.131' + req.url);
+});
 
 if (process.env.NODE_MULTI) {
   const cluster = require('cluster');
