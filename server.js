@@ -20,7 +20,7 @@ server.use(cors());
 
 server.all('/api/v1/artists/:artistID/albums/', (req, res, next) => {
   // console.log('http://localhost:3001' + req.url);
-  res.redirect('http://ec2-54-164-130-42.compute-1.amazonaws.com:3001' + req.url);
+  res.redirect('ec2-54-164-130-42.compute-1.amazonaws.com' + req.url);
   next();
 });
 
